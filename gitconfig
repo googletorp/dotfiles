@@ -1,6 +1,6 @@
 [user]
-	name = Mikkel Hoegh
-	email = mikkel@hoegh.org
+	name = Jakob Torp Svendsen
+	email = jakob@revealit.dk
 [color]
 	ui = auto
 [merge]
@@ -9,5 +9,4 @@
 [core]
 	excludesfile = ~/.gitignore
 [github]
-	user = mikl
-
+	user = briel

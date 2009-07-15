@@ -124,6 +124,6 @@ export MANPATH=/opt/local/share/man:$MANPATH
 export PAGER=less
 export LESS=-r
 export EDITOR=/usr/bin/vim
-export CVSROOT=:pserver:mikl@cvs.drupal.org:/cvs/drupal-contrib
+export CVSROOT=:pserver:anonymous@cvs.drupal.org:/cvs/drupal-contrib
 
 setprompt
