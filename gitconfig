@@ -1,12 +1,35 @@
+[core]
+  excludesfile = ~/.gitignore
+  legacyheaders = false
 [user]
 	name = Jakob Torp Svendsen
 	email = jakob@revealit.dk
+[format]
+  numbered = auto
+[repack]
+  usedeltabaseoffset = true
 [color]
-	ui = auto
+  ui = auto
+  interactive = auto
+[alias]
+  st = status
+  ci = commit
+  co = checkout
+  staged = "diff --cached"
+  oneline = "log --pretty=oneline"
+  llog = log --date=local
+  changes = diff --name-status -r
+  unadd = update-index --force-remove
 [merge]
-	tool = opendiff
-	summary = true
-[core]
-	excludesfile = ~/.gitignore
+  tool = opendiff
+[mergetool "changesapp"]
+  cmd = /usr/bin/env chdiff --wait "$LOCAL" "$REMOTE"
+  keepBackup = false
+  trustExitCode = false
+[mergetool "opendiff"]
+  cmd = /usr/bin/opendiff -merge="$PWD/$MERGED" -ancestor="$PWD/$BASE" "$PWD/$LOCAL" "$PWD/$REMOTE"
+  keepBackup = false
+  trustExitCode = false
 [github]
 	user = briel
+

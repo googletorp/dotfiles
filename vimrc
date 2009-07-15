@@ -24,11 +24,11 @@ set tenc=utf-8
 """"""""""""""""""""
 " Theme and colors "
 """"""""""""""""""""
-set background=dark " color of terminal background
+set background=light " color of terminal background
 if &t_Co > 2 || has("gui_running")
   syntax on
+  colorscheme autumn
 endif
-colorscheme desert
 
 """"""""""""""""""""""""
 " Backup configuration "
@@ -65,10 +65,11 @@ set wildmode=longest,list
 set nohlsearch
 set incsearch
 " what to show when I hit :set list
-  set listchars=tab:\|\ ,trail:.,extends:>,precedes:<,eol:$ 
+set listchars=tab:\|\ ,trail:.,extends:>,precedes:<,eol:$
 set scrolloff=5 " always show me the next/previous 5 lines
 set laststatus=2
 set statusline=%-(%F%m%r%h%w%)\ %{&ff}/%Y/%{&encoding}\ %=%(@\%03.3b\ %Ll\ %l,%v\ (%p%%)%)
+set cursorline
 
 set showmode
 
@@ -79,10 +80,10 @@ set formatoptions=tcroqn
 set autoindent
 set smartindent
 set cindent
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set expandtab " Conform to PEP 8 wherever possible
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+set expandtab " I prefer spaces to tabs.
 set smarttab
 set textwidth=72
 
@@ -92,13 +93,6 @@ set textwidth=72
 set foldenable 
 set foldmethod=indent " My files are always neatly indented
 set foldlevel=100 " Don't autofold
-
-"""""""""
-" CTags "
-"""""""""
-nnoremap <silent> <F8> :TlistToggle<CR>
-let Tlist_Ctags_Cmd="/usr/bin/ctags"
-
 
 """""""""""""""""""""""""""""""
 " File explorer configuration "
@@ -111,37 +105,12 @@ function MyFileHandler(fn)
 endfunction
 let g:explFileHandler = 'MyFileHandler'
 
-"""""""""""""""""""""""""""""
-" Grep plugin configuration "
-"""""""""""""""""""""""""""""
-let Grep_Key = '<F10>'
-let Grep_Default_Options = '-i'
-let Grep_Default_Filelist = '*.py *.pt *.dtml'
-let Grep_Find_Path = '/usr/bin/find'
-let Grep_Xargs_Path = '/usr/bin/xargs'
-
-
-""""""""""""""""""""""""""""""
-" Finegrained filetype stuff "
-""""""""""""""""""""""""""""""
-au BufNewFile,BufRead *.kid set ft=xml
-au BufNewFile,BufRead *.inc set ft=php
-au BufNewFile,BufRead *.module set ft=php
-au BufNewFile,BufRead *.install set ft=php
-au BufNewFile,BufRead *.po,*.pot setf po
-au BufNewFile,BufRead *.js set ft=javascript.jquery
-" Three different Markdown extensions (I wish JG would pick an official one).
-au BufNewFile,BufRead *.mkd set ft=mkd
-au BufNewFile,BufRead *.mdown set ft=mkd
-au BufNewFile,BufRead *.markdown set ft=mkd
-
-"au FileType python source ~/.vim/syntax/python.vim
-au FileType python source ~/.vim/ftplugin/python_fn.vim
-au FileType make set noet
-au FileType python set foldmethod=indent sw=4 ts=4
-au FileType html,php,xml,xsl,dtd,xhtml set sw=2 ts=2
+"""""""""""""""""""""""""""""""""
+" Applies to multiple filetypes "
+"""""""""""""""""""""""""""""""""
 au FileType html,php,xml,xsl,dtd,xhtml source ~/.vim/scripts/closetag.vim 
-au FileType mkd set ai formatoptions=tcroqn2 comments=n:>
 
-let php_noShortTags=1
-let g:python_highlight_all=1
+" Security fix: modelines have been an avenue for trojan attacks against
+" VIM-users, so we'll disable that.
+set nomodeline
+
