@@ -19,8 +19,6 @@ export HISTCONTROL=ignoreboth
 export HISTCONTROL=erasedups
 # Case-insensitive tab-completion
 set completion-ignore-case On
-# Configure bash to use vi editing of the command line
-set -o vi
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -56,9 +54,9 @@ if [ -f /etc/bash_completion ]; then
 fi
 
 # VirtualEnv wrapper for Django work
-if [ -d ~/bin/virtualenvwrapper ]; then
-    export WORKON_HOME=$HOME/.virtualenvs
-    source ~/bin/virtualenvwrapper/virtualenvwrapper_bashrc
+if [ -f /opt/local/bin/virtualenvwrapper_bashrc-2.5 ]; then
+    export WORKON_HOME=$HOME/work/django/virtualenvs
+    source /opt/local/bin/virtualenvwrapper_bashrc-2.5
 fi
 
 # OS-specific overrides.
@@ -68,7 +66,7 @@ case `uname -a | awk '{print $1}'` in
         export PATH=/opt/local/Library/Frameworks/Python.framework/Versions/2.6/bin:/opt/local/apache2/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin:/opt/local/lib/postgresql83/bin/:$PATH
         
         # Only setting the drupal.org CVS root on my Mac
-        export CVSROOT=:pserver:mikl@cvs.drupal.org:/cvs/drupal-contrib
+        export CVSROOT=:pserver:anonymous@cvs.drupal.org:/cvs/drupal-contrib
         
         # Macports bash completion :)
         if [ -f /opt/local/etc/bash_completion ]; then

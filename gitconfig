@@ -31,5 +31,5 @@
   keepBackup = false
   trustExitCode = false
 [github]
-	user = briel
+	user = googletorp
 
