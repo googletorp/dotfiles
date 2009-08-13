@@ -6,6 +6,8 @@
 	email = jakob@revealit.dk
 [format]
   numbered = auto
+[push]
+  default = matching
 [repack]
   usedeltabaseoffset = true
 [color]
