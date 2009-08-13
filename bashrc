@@ -66,7 +66,7 @@ case `uname -a | awk '{print $1}'` in
         export PATH=/opt/local/Library/Frameworks/Python.framework/Versions/2.6/bin:/opt/local/apache2/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin:/opt/local/lib/postgresql83/bin/:$PATH
         
         # Only setting the drupal.org CVS root on my Mac
-        export CVSROOT=:pserver:anonymous@cvs.drupal.org:/cvs/drupal-contrib
+        export CVSROOT=:pserver:googletorp@cvs.drupal.org:/cvs/drupal-contrib
         
         # Macports bash completion :)
         if [ -f /opt/local/etc/bash_completion ]; then
