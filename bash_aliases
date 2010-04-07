@@ -1,7 +1,9 @@
 alias ll='ls -l'
-alias la='ls -A'
+alias la='ls -lAh'
 alias l='ls -CF'
 alias tabe='mvim'
+alias drush='php ~/bin/drush.php'
+mgrep () { grep -Ir --colour=always "$@" * ; }
 alias psql='psql84 -h localhost'
 alias tunnel='ssh -f gad -L 5432:localhost:5432 -N'
 alias createdb='/opt/local/lib/postgresql84/bin/createdb -h localhost'
