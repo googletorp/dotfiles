@@ -17,6 +17,8 @@ export HISTCONTROL=ignoreboth
 export HISTCONTROL=erasedups
 # Case-insensitive tab-completion
 set completion-ignore-case On
+# Configure bash to use vi-style editing of the command line.
+set -o vi
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -54,26 +56,27 @@ if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
 fi
 
 # OS-specific overrides.
-case `uname -a | awk '{print $1}'` in
+case `uname -s` in
     'Darwin') # Mac OS X
-        # MacPorts binary paths.
-        #export PATH=/opt/local/Library/Frameworks/Python.framework/Versions/2.6/bin:/opt/local/apache2/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin:/opt/local/lib/postgresql84/bin/:$PATH
-        
+        # Make sure /usr/local/bin takes precendence over /usr/bin
+        PATH=/usr/local/bin:"${PATH}"
+
+        # Add our Homebrew Python bin.
+        PATH=/usr/local/Cellar/python/2.7/bin:"${PATH}"
+
         # Only setting the drupal.org CVS root on my Mac
-        export CVSROOT=:pserver:googletorp@cvs.drupal.org:/cvs/drupal-contrib
-        
-        # Macports bash completion :)
-        if [ -f /opt/local/etc/bash_completion ]; then
-            . /opt/local/etc/bash_completion
-        fi
-        
-        if [ -d /opt/local/share/man ]; then
-            export MANPATH=/opt/local/share/man:$MANPATH
+        export CVSROOT=:pserver:mikl@cvs.drupal.org:/cvs/drupal-contrib
+
+        if [ -f /Applications/MacVim.app/Contents/MacOS/Vim ]; then
+            export EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
         fi
     ;;
     'FreeBSD')
         if [ -f /usr/local/bin/vim ]; then
+            # Use VIM from ports if available.
             export EDITOR=/usr/local/bin/vim
+            # Set FreeBSD package mirror.
+            export PACKAGEROOT=http://ftp.dk.freebsd.org
         fi
     ;;
 esac

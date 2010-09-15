@@ -62,6 +62,7 @@ set report=0 " Tell me how many lines commands change. Always.
 set noerrorbells " I hate console beeps.
 set visualbell
 set showcmd
+set noshowmatch " Don't jump cursor to matching brace.
 
 """""""""""""""
 " Visual cues "
@@ -77,7 +78,7 @@ set incsearch
 set listchars=tab:\|\ ,trail:.,extends:>,precedes:<,eol:$
 set scrolloff=5 " always show me the next/previous 5 lines
 set laststatus=2
-set statusline=%-(%F%m%r%h%w%)\ %{&ff}/%Y/%{&encoding}\ %=%(@\%03.3b\ %Ll\ %l,%v\ (%p%%)%)
+set statusline=%-(%F%m%r%h%w%)\ %{&ff}/%Y/%{&encoding}\ %{fugitive#statusline()}\ %=%(@\%03.3b\ %Ll\ %l,%v\ (%p%%)%)
 set cursorline
 
 set showmode
@@ -120,10 +121,14 @@ let g:explHideFiles='^\.,\.pyc$'
 """"""""""""""""""
 let g:snips_author = 'Mikkel Hoegh' " SnipMate full name.
 
-"""""""""""""""""""""""""""""""""
-" Applies to multiple filetypes "
-"""""""""""""""""""""""""""""""""
-au FileType html,php,xml,xsl,dtd,xhtml source ~/.vim/scripts/closetag.vim 
+" Only do this part when compiled with support for autocommands
+if has("autocmd")
+  " Applies to multiple filetypes "
+  autocmd FileType html,php,xml,xsl,dtd,xhtml source ~/.vim/scripts/closetag.vim
+
+  " automatically leave insert mode after 'updatetime' milliseconds of inaction
+  autocmd CursorHoldI * stopinsert
+endif
 
 """""""""""""""""""
 " Misc. functions "
@@ -132,8 +137,6 @@ function! s:rstrip ()
   exec '%s/\v\s+$//'
 endfunction
 
-" automatically leave insert mode after 'updatetime' milliseconds of inaction
-au CursorHoldI * stopinsert
 
 " Security fix: modelines have been an avenue for trojan attacks against
 " VIM-users, so we'll disable that.
