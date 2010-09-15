@@ -48,16 +48,16 @@ if [ -f /etc/bash_completion ]; then
 fi
 
 # VirtualEnv wrapper for Django work
-if [ -f /opt/local/bin/virtualenvwrapper_bashrc-2.5 ]; then
+if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
     export WORKON_HOME=$HOME/work/django/virtualenvs
-    source /opt/local/bin/virtualenvwrapper_bashrc-2.5
+    source /usr/local/bin/virtualenvwrapper.sh
 fi
 
 # OS-specific overrides.
 case `uname -a | awk '{print $1}'` in
     'Darwin') # Mac OS X
         # MacPorts binary paths.
-        export PATH=/opt/local/Library/Frameworks/Python.framework/Versions/2.6/bin:/opt/local/apache2/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin:/opt/local/lib/postgresql84/bin/:$PATH
+        #export PATH=/opt/local/Library/Frameworks/Python.framework/Versions/2.6/bin:/opt/local/apache2/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin:/opt/local/lib/postgresql84/bin/:$PATH
         
         # Only setting the drupal.org CVS root on my Mac
         export CVSROOT=:pserver:googletorp@cvs.drupal.org:/cvs/drupal-contrib
