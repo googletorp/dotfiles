@@ -1,13 +1,14 @@
 [core]
-  excludesfile = ~/.gitignore
+	excludesfile = /Users/mikl/.gitignore
   legacyheaders = false
+	quotepath = false
 [user]
-	name = Jakob Torp Svendsen
+	name = Jakob Torp
 	email = jakob@revealit.dk
 [format]
   numbered = auto
 [push]
-  default = matching
+  default = upstream
 [repack]
   usedeltabaseoffset = true
 [color]
