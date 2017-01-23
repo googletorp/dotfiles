@@ -106,8 +106,8 @@ function setprompt {
     PS1="$PS1 $sc($nc\w$sc)"
 
     # If available, add vcprompt to PS1.
-    if [ -f ~/bin/vcprompt ]; then
-        PS1=$PS1' $(vcprompt -f \(%n:%b%r%m%u\))'
+    if [ -f /usr/local/bin/vcprompt ]; then
+        PS1=$PS1' $(vcprompt -f \(%n:%b%m%u\))'
     fi
 
     # And finally, the prompt symbol preceeded by a newline.
@@ -115,4 +115,19 @@ function setprompt {
 }
 
 setprompt
+
+# Include Drush bash customizations.
+if [ -f "/Users/jakob/.drush/drush.bashrc" ] ; then
+  source /Users/jakob/.drush/drush.bashrc
+fi
+
+# Include Drush completion.
+if [ -f "/Users/jakob/.drush/drush.complete.sh" ] ; then
+  source /Users/jakob/.drush/drush.complete.sh
+fi
+
+# Include Drush prompt customizations.
+if [ -f "/Users/jakob/.drush/drush.prompt.sh" ] ; then
+  source /Users/jakob/.drush/drush.prompt.sh
+fi
 

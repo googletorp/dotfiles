@@ -2,7 +2,6 @@ alias ll='ls -l'
 alias la='ls -lAh'
 alias l='ls -CF'
 alias tabe='mvim'
-alias drush='php ~/bin/drush'
 alias ddm='drush make --no-core --contrib-destination=.'
 mgrep () { grep -Ir --colour=always "$@" * ; }
 #alias pg_start= 'pg_ctl -D /usr/local/var/postgres start'
