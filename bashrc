@@ -1,3 +1,5 @@
+
+
 # Mikkel Hoegh's bashrc. Inspired from lots of different sources.
 
 # If not running interactively, don't do anything
@@ -19,6 +21,9 @@ export HISTCONTROL=erasedups
 set completion-ignore-case On
 # Configure bash to use vi-style editing of the command line.
 set -o vi
+
+# Setup Gem location
+export GEM_HOME="/usr/local/include/gems"
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
