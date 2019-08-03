@@ -1,5 +1,5 @@
 [core]
-	excludesfile = /Users/mikl/.gitignore
+	excludesfile = /Users/jakob/.gitignore_global
   legacyheaders = false
 	quotepath = false
 [user]

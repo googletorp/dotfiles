@@ -136,3 +136,5 @@ if [ -f "/Users/jakob/.drush/drush.prompt.sh" ] ; then
   source /Users/jakob/.drush/drush.prompt.sh
 fi
 
+# Make sure we always have ssh keys loaded and ready to use.
+/usr/bin/ssh-add -A
